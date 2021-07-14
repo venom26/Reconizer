@@ -60,7 +60,7 @@ getdomains(){
     cat $ORG-domains* | sort -u | tee -a $ORG-unique
     cat $ORG-domains* | sort -u | sudo tee -a unique-$ORG
     printf "${GREEN}[+]${END} Getting domains from all\n"
-    amass enum -brute -include crtsh -df unique-$ORG -config /opt/config.ini
+    amass enum -brute -include crtsh -df unique-$ORG -config /opt/config.ini | tee -a $ORG-domains.txt
     printf "${YELLOW}[+]${END} Cleaning Thrash.\n"
     sudo mkdir $ORG ; sudo mv *.txt $ORG/
     printf "${YELLOW}[+]${END} Script is done.\n"
